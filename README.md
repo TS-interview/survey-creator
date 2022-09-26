@@ -12,6 +12,8 @@ and interacting with the application was very enjoyable. A simple breakdown can 
 
 ## Available Scripts
 
+_Before running scripts, please run `npm install`_
+
 In the project directory, you can run:
 
 ### `npm start`
