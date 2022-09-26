@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Input } from '@chakra-ui/react';
-import { FastField, useField, useFormikContext } from 'formik';
+import { FastField, useField } from 'formik';
 import { useDebouncedCallback } from 'use-debounce';
 
 const INPUT_DELAY = 200;

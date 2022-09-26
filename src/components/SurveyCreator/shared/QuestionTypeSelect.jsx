@@ -31,11 +31,12 @@ const QuestionTypeSelect = ({ index, name, previousType }) => {
   return (
     <Select
       bg="gray.50"
-      placeholder="Select type"
-      {...field}
-      onChange={onChangeHandler}
-      w="200px"
+      data-testid="questionTypeSelect"
       isRequired
+      onChange={onChangeHandler}
+      placeholder="Select type"
+      w="200px"
+      {...field}
     >
       {Object.values(QUESTION_TYPES).map((type) => (
         <option key={type.id} value={type.id}>

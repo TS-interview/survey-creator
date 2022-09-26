@@ -29,7 +29,9 @@ const MultipleChoiceField = ({
       </Flex>
       <FormButtonPanel
         addHandler={insertHandler}
+        addButtonTestId="addOption"
         deleteHandler={removeHandler}
+        deleteButtonTestId="removeOption"
         showDelete={hasMany}
       />
     </Flex>
@@ -54,7 +56,7 @@ const MultipleChoiceFields = ({ index }) => {
         };
 
         return (
-          <Flex direction="column" w="100%">
+          <Flex data-testid="multipleChoiceFields" direction="column" w="100%">
             {options?.map((option, optionIndex) => (
               <MultipleChoiceField
                 key={option?.id}

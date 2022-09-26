@@ -21,24 +21,10 @@ import SurveyForm from './shared/SurveyForm';
  * @returns
  */
 const SurveyCreator = ({ survey }) => {
-  const emptyData = {
-    title: 'Untitled survey',
-    description: 'description',
-    questionList: [
-      {
-        id: uuid(),
-        title: 'Question 1',
-        type: 'multiple-choice',
-        options: [{ id: uuid(), label: 'option 1' }],
-      },
-    ],
-  };
-
-  const surveyData = survey?.title ? survey : emptyData;
   return (
     <Layout>
-      <Header title={surveyData.title} />
-      <SurveyForm survey={surveyData} />
+      <Header title={survey?.title} />
+      <SurveyForm survey={survey} />
     </Layout>
   );
 };
@@ -49,9 +35,15 @@ SurveyCreator.propTypes = {
     description: PropTypes.string,
     questionList: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.string,
         title: PropTypes.string,
         type: PropTypes.string,
-        options: PropTypes.arrayOf(PropTypes.string),
+        options: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.string,
+            label: PropTypes.string,
+          })
+        ),
       })
     ),
   }),

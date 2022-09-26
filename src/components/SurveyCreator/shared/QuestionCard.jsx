@@ -19,7 +19,6 @@ const QuestionCard = ({
   setActive,
   question,
 }) => {
-  console.log('QC activeItem', activeItem, index);
   const [isHover, setIsHover] = useState(false);
   const isActive = activeItem === question?.id;
 
@@ -52,21 +51,22 @@ const QuestionCard = ({
       {(provided, snapshot) => (
         <Flex
           bg="white"
-          direction="column"
-          w="100%"
-          p="32px 24px"
           border={!isActive && '1px solid #E2E8F0'}
           borderRadius="xl"
           boxShadow={isActive && 'md'}
+          data-testid="questionCard"
+          direction="column"
           opacity={snapshot.isDragging ? '0.75' : '1'}
-          position="relative"
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
           onFocus={setCurrentToActive}
           onClick={setCurrentToActive}
           onMouseEnter={onMouseEnterHandler}
           onMouseLeave={onMouseLeaveHandler}
+          p="32px 24px"
+          position="relative"
+          w="100%"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
         >
           <DragHandleIcon
             color="gray.500"

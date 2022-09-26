@@ -31,8 +31,8 @@ const QuestionCardFields = ({ index }) => {
     </Text>
   );
 
-  const RadioFieldPreview = () => (
-    <RadioGroup isDisabled>
+  const BooleanFieldPreview = () => (
+    <RadioGroup data-testid="booleanFieldPreview" isDisabled>
       <Stack direction="column">
         <Radio value="1">True</Radio>
         <Radio value="2">False</Radio>
@@ -41,7 +41,12 @@ const QuestionCardFields = ({ index }) => {
   );
 
   const NumberFieldPreview = () => (
-    <NumberInput bg="gray.200" defaultValue={15} isDisabled>
+    <NumberInput
+      bg="gray.200"
+      data-testid="numberFieldPreview"
+      defaultValue={15}
+      isDisabled
+    >
       <NumberInputField />
       <NumberInputStepper>
         <NumberIncrementStepper />
@@ -61,7 +66,7 @@ const QuestionCardFields = ({ index }) => {
     let previewField;
     switch (type) {
       case QUESTION_TYPES.boolean.id:
-        previewField = <RadioFieldPreview />;
+        previewField = <BooleanFieldPreview />;
         break;
       case QUESTION_TYPES.number.id:
         previewField = <NumberFieldPreview />;
@@ -70,6 +75,7 @@ const QuestionCardFields = ({ index }) => {
         previewField = (
           <Textarea
             bg="gray.300"
+            data-testid="textFieldPreview"
             isDisabled
             value="Text goes here"
           />

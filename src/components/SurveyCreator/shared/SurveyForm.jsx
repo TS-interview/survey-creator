@@ -11,15 +11,14 @@ import TitleCard from './TitleCard';
 
 const SurveyForm = ({ survey }) => {
   const [activeItem, setActiveItem] = useState(null);
-  // console.log('Parent activeItem', activeItem);
 
   return (
     <Flex justify="center" w="100%" mb="100px">
       <Formik
         initialValues={{
-          title: survey.title || '',
-          description: survey.description || '',
-          questionList: survey.questionList || [],
+          title: survey?.title || '',
+          description: survey?.description || '',
+          questionList: survey?.questionList || [],
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -28,7 +27,7 @@ const SurveyForm = ({ survey }) => {
         validateOnChange={false}
         validateOnBlur={false}
       >
-        {({ values, setFieldValue }) => (
+        {({ values }) => (
           <Form>
             <VStack w="780px">
               <TitleCard
@@ -77,7 +76,6 @@ const SurveyForm = ({ survey }) => {
                                   activeItem={activeItem}
                                   setActive={setActiveItem}
                                   question={question}
-                                  setFieldValue={setFieldValue}
                                 />
                               ))}
                               {provided.placeholder}
@@ -88,7 +86,9 @@ const SurveyForm = ({ survey }) => {
                       <Box mt="32px">
                         <FormButtonPanel
                           addHandler={addNewQuestion}
+                          addButtonTestId="pushQuestionButton"
                           deleteHandler={popQuestion}
+                          deleteButtonTestId="popQuestionButton"
                           showDelete={values.questionList?.length > 0}
                         />
                       </Box>
