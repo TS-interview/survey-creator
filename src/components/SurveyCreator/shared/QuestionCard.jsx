@@ -12,12 +12,12 @@ import QuestionCardFields from './QuestionCardFields';
 import QuestionTypeSelect from './QuestionTypeSelect';
 
 const QuestionCard = ({
+  activeItem,
   index,
   insert,
-  remove,
-  activeItem,
-  setActive,
   question,
+  remove,
+  setActive,
 }) => {
   const [isHover, setIsHover] = useState(false);
   const isActive = activeItem === question?.id;
@@ -32,19 +32,19 @@ const QuestionCard = ({
 
   const insertHandler = useCallback(() => {
     const defaultQuestion = createDefaultQuestion();
-    // BUG: there seems to be an issue w/ updating parent state from FieldArray
-    // setActive(defaultQuestion.id);
+    setActive(defaultQuestion?.id);
     insert(index + 1, defaultQuestion);
   }, [index]);
 
   const removeHandler = useCallback(() => {
-    // setActive(null);
     remove(index);
   }, [index]);
 
   const setCurrentToActive = useCallback(() => {
-    setActive(question?.id);
-  }, []);
+    if (!isActive) {
+      setActive(question?.id);
+    }
+  }, [isActive]);
 
   return (
     <Draggable draggableId={question?.id} index={index}>
@@ -56,23 +56,22 @@ const QuestionCard = ({
           boxShadow={isActive && 'md'}
           data-testid="questionCard"
           direction="column"
-          opacity={snapshot.isDragging ? '0.75' : '1'}
-          onFocus={setCurrentToActive}
           onClick={setCurrentToActive}
+          onFocus={setCurrentToActive}
           onMouseEnter={onMouseEnterHandler}
           onMouseLeave={onMouseLeaveHandler}
+          opacity={snapshot.isDragging ? '0.75' : '1'}
           p="32px 24px"
           position="relative"
-          w="100%"
           ref={provided.innerRef}
+          w="100%"
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
           <DragHandleIcon
             color="gray.500"
-            position="absolute"
-            top="8px"
             left="49%"
+            position="absolute"
             style={{
               transform: 'rotate(90deg)',
               visibility:
@@ -80,18 +79,19 @@ const QuestionCard = ({
                   ? 'visible'
                   : 'hidden',
             }}
+            top="8px"
           />
           <Box
-            height="100%"
-            position="absolute"
             bg="purple.400"
             borderLeftRadius="xl"
-            top="0"
+            height="100%"
             left="0"
-            width="6px"
+            position="absolute"
             style={{
               visibility: isActive ? 'visible' : 'hidden',
             }}
+            top="0"
+            width="6px"
           />
           <Flex align="center" justify={'space-between'} w="100%">
             {isActive ? (
@@ -113,7 +113,7 @@ const QuestionCard = ({
                 <Heading as="h5" size="sm" fontWeight="500">
                   {question?.title}
                 </Heading>
-                <Heading as="h6" size="sm" fontWeight="400" color="gray.500">
+                <Heading as="h6" color="gray.500" size="sm" fontWeight="400">
                   Type: {getQuestionTypeLabel(question?.type)}
                 </Heading>
               </>
@@ -121,7 +121,7 @@ const QuestionCard = ({
           </Flex>
           <Collapse in={isActive}>
             <QuestionCardFields index={index} />
-            <Divider mt="32px" mb="16px" borderColor="gray.300" />
+            <Divider borderColor="gray.300" mb="16px" mt="32px" />
             <Flex justify="flex-end">
               <FormButtonPanel
                 addHandler={insertHandler}
@@ -136,11 +136,9 @@ const QuestionCard = ({
 };
 
 QuestionCard.propTypes = {
+  activeItem: PropTypes.string,
   index: PropTypes.number.isRequired,
   insert: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
-  activeItem: PropTypes.string,
-  setActive: PropTypes.func.isRequired,
   question: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -152,6 +150,8 @@ QuestionCard.propTypes = {
       })
     ),
   }),
+  remove: PropTypes.func.isRequired,
+  setActive: PropTypes.func.isRequired,
 };
 
 export default QuestionCard;

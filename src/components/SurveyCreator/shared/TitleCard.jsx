@@ -39,11 +39,11 @@ const TitleCard = () => {
           <FastField
             as={Input}
             bg="gray.50"
-            name="title"
             fontWeight="500"
             fontSize="28px"
             mb="8px"
             mt="8px"
+            name="title"
             w="100%"
           />
           <FastField as={Input} bg="gray.50" name="description" w="100%" />

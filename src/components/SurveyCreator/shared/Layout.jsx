@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@chakra-ui/react';
 
 const Layout = ({ children }) => (
-  <Flex direction="column" w="100%" minH="100vh" bg="gray.100">
+  <Flex bg="gray.100" direction="column" minH="100vh" w="100%">
     {children}
   </Flex>
 );

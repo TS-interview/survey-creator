@@ -13,7 +13,7 @@ const SurveyForm = ({ survey }) => {
   const [activeItem, setActiveItem] = useState(null);
 
   return (
-    <Flex justify="center" w="100%" mb="100px">
+    <Flex justify="center" mb="100px" w="100%">
       <Formik
         initialValues={{
           title: survey?.title || '',
@@ -70,12 +70,12 @@ const SurveyForm = ({ survey }) => {
                               {values.questionList?.map((question, index) => (
                                 <QuestionCard
                                   key={question?.id}
+                                  activeItem={activeItem}
                                   index={index}
                                   insert={insert}
-                                  remove={remove}
-                                  activeItem={activeItem}
-                                  setActive={setActiveItem}
                                   question={question}
+                                  remove={remove}
+                                  setActive={setActiveItem}
                                 />
                               ))}
                               {provided.placeholder}

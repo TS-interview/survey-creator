@@ -1,4 +1,4 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import SurveyCreator from './components/SurveyCreator/SurveyCreator';
 import { dummySurveyData } from './components/SurveyCreator/constants';

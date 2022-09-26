@@ -80,6 +80,9 @@ const QuestionCardFields = ({ index }) => {
             value="Text goes here"
           />
         );
+        break;
+      default:
+        return;
     }
 
     content = (

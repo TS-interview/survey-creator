@@ -9,15 +9,17 @@ import uuid from 'react-uuid';
 import FormButtonPanel from './FormButtonPanel';
 
 const MultipleChoiceField = ({
-  index,
   hasMany,
+  index,
+
   insertHandler,
-  removeHandler,
+
   notLast,
   optionIndex,
+  removeHandler,
 }) => {
   return (
-    <Flex justify="space-between" w="100%" mb={notLast ? '16px' : '0'}>
+    <Flex justify="space-between" mb={notLast ? '16px' : '0'} w="100%">
       <Flex align="center">
         <Icon as={ImRadioUnchecked} mr="8px" />
         <FastField
@@ -60,12 +62,12 @@ const MultipleChoiceFields = ({ index }) => {
             {options?.map((option, optionIndex) => (
               <MultipleChoiceField
                 key={option?.id}
-                optionIndex={optionIndex}
-                index={index}
                 hasMany={options?.length > 1}
+                index={index}
                 insertHandler={insertHandler}
-                removeHandler={removeHandler}
                 notLast={options?.length - 1 !== optionIndex}
+                optionIndex={optionIndex}
+                removeHandler={removeHandler}
               />
             ))}
           </Flex>

@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Simple Survey Creator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Chakra UI]().\
+Libraries such as [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd) and [formik](https://www.npmjs.com/package/formik) were used to create a more enjoyable UI experience.
+
+## Design V1
+
+Here is a very simple [competitive analysis](https://www.figma.com/file/b5eTVqCszpJqv96pbcMoS0/Enveritas-Survey-Creator) and a [design V1 rough draft](https://www.figma.com/file/sJs4usXpyZa9lKauY5NKT0/Enveritas---Survey-Creator-Draft-V1?node-id=802%3A9203). These were done before development to get an initial idea of the application.
+
+The idea behind V1 is to have a straightforward survey/form creator. I hand tested a couple form/survey creators, but always ended back to the Google Form as it was simple to use,\
+and interacting with the application was very enjoyable. A simple breakdown can be found in the [competitive analysis](https://www.figma.com/file/b5eTVqCszpJqv96pbcMoS0/Enveritas-Survey-Creator) figma file.
 
 ## Available Scripts
 
@@ -11,60 +19,28 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Currently only contains basic unit tests that covers creating new questions and setting question/answer type.
 
-### `npm run build`
+## TODO
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Will most likely come back to fixing these issues, but ran out of time before turning in the take home.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Performance
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When 10+ questions are created, the input fields start to have some latency issues. This is due to unnecessary re-renders of all the fields.\
+Wherever possible, I have made performance tweaks (such as using `FastFields`, validating on submit only, and placing functions in the `useCallBack` hook).\
+However, what would have made a large difference is debouncing the `onChange` function for the input fields.\
+Progress was made in [DebouncedTextField.jsx](src/components/common/DebouncedTextField.jsx), but there are some issues with the Formik and Chakra UI `Input` component.
 
-### `npm run eject`
+### Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Definitely can use more unit testing, especially around form submission, but a nice to have would be to set up integration tests for testing drag and dropping of the question cards.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Form Validation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Did not have the time to get around to this, nor were there specific guidelines on validation, but it would have been nice to have actual form validation.\
+Currently, the form only checks for a valid quetion/answer type on submit. The plan was to set character max length limits for the `title`, `label`, and `description` fields.\
+With that set up, we can have error/success toasts appear on submit.
