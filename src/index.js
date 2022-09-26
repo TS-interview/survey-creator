@@ -6,6 +6,7 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+// must use @hello-pangea/dnd over react-beautiful-dnd as it does not support strict mode
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
