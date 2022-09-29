@@ -11,9 +11,7 @@ import FormButtonPanel from './FormButtonPanel';
 const MultipleChoiceField = ({
   hasMany,
   index,
-
   insertHandler,
-
   notLast,
   optionIndex,
   removeHandler,
@@ -47,14 +45,14 @@ const MultipleChoiceFields = ({ index }) => {
   return (
     <FieldArray name={`questionList.${index}.options`}>
       {({ insert, remove }) => {
-        const insertHandler = () => {
-          insert(index + 1, {
+        const insertHandler = (optionIndex) => {
+          insert(optionIndex + 1, {
             id: uuid(),
             label: 'Option',
           });
         };
-        const removeHandler = () => {
-          remove(index);
+        const removeHandler = (optionIndex) => {
+          remove(optionIndex);
         };
 
         return (
@@ -64,10 +62,10 @@ const MultipleChoiceFields = ({ index }) => {
                 key={option?.id}
                 hasMany={options?.length > 1}
                 index={index}
-                insertHandler={insertHandler}
+                insertHandler={() => insertHandler(optionIndex)}
                 notLast={options?.length - 1 !== optionIndex}
                 optionIndex={optionIndex}
-                removeHandler={removeHandler}
+                removeHandler={() => removeHandler(optionIndex)}
               />
             ))}
           </Flex>

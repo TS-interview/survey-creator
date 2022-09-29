@@ -154,4 +154,11 @@ QuestionCard.propTypes = {
   setActive: PropTypes.func.isRequired,
 };
 
-export default QuestionCard;
+const arePropsEqual = (prevProps, nextProps) => {
+  return (
+    prevProps.activeItem === nextProps.activeItem &&
+    prevProps.index === nextProps.index
+  );
+};
+
+export default React.memo(QuestionCard, arePropsEqual);

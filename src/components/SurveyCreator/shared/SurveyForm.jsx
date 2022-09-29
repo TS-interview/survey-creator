@@ -12,6 +12,13 @@ import TitleCard from './TitleCard';
 const SurveyForm = ({ survey }) => {
   const [activeItem, setActiveItem] = useState(null);
 
+  const submitHandler = async (values) => {
+    await new Promise((r) => setTimeout(r, 500));
+    const payload = JSON.stringify(values, null, 2);
+    localStorage.setItem('survey', payload);
+    alert(payload);
+  };
+
   return (
     <Flex justify="center" mb="100px" w="100%">
       <Formik
@@ -20,10 +27,7 @@ const SurveyForm = ({ survey }) => {
           description: survey?.description || '',
           questionList: survey?.questionList || [],
         }}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={submitHandler}
         validateOnChange={false}
         validateOnBlur={false}
       >
