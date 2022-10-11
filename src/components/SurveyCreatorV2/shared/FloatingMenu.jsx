@@ -2,6 +2,7 @@ import React from 'react';
 
 import { IconButton, SlideFade, VStack } from '@chakra-ui/react';
 import { useFormikContext } from 'formik';
+import PropTypes from 'prop-types';
 import { BiFolderPlus, BiPlusCircle, BiSave, BiTransfer } from 'react-icons/bi';
 
 const FloatingMenu = ({
@@ -32,6 +33,17 @@ const FloatingMenu = ({
       </VStack>
     </SlideFade>
   );
+};
+
+FloatingMenu.defaultProps = {
+  transferHandler: () => {},
+};
+
+FloatingMenu.propTypes = {
+  addFunctionHandler: PropTypes.func.isRequired,
+  addQuestionHandler: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  transferHandler: PropTypes.func,
 };
 
 export default FloatingMenu;

@@ -183,12 +183,7 @@ FolderCard.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     itemType: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        label: PropTypes.string,
-      })
-    ),
+    children: PropTypes.array,
   }),
   remove: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,

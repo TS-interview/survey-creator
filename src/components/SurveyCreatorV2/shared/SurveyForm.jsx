@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
-import { Box, Button, Flex, SimpleGrid, VStack } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, VStack } from '@chakra-ui/react';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { FieldArray, Form, Formik } from 'formik';
 
 import { CHILDREN_TYPES } from '../constants';
-import { createDefaultItem } from '../helpers';
 import FolderCard from './FolderCard';
 import QuestionCard from './QuestionCard';
 import SurveyNavigation from './SurveyNavigation';

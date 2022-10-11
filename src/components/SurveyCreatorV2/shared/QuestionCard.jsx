@@ -165,6 +165,7 @@ QuestionCard.propTypes = {
   insert: PropTypes.func.isRequired,
   question: PropTypes.shape({
     id: PropTypes.string.isRequired,
+    itemType: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(

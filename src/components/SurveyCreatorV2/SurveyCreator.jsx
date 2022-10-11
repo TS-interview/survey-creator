@@ -10,12 +10,6 @@ import SurveyForm from './shared/SurveyForm';
  *
  * Simple survey creator. Heavily influenced by Google Forms.
  *
- * List of TODO:
- * - Make MC options draggable
- * - Skeleton loading states for fields
- * - Debounce Input Fields
- * - Additional testing
- *
  * @param {Object} survey
  * @returns
  */

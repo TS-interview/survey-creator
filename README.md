@@ -1,5 +1,7 @@
 # Simple Survey Creator
 
+_**UPDATE: go to [SurveyCreatorV2 README](src/components/SurveyCreatorV2/README.md) for updated information**_
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Chakra UI]().\
 Libraries such as [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd) and [formik](https://www.npmjs.com/package/formik) were used to create a more enjoyable UI experience.
 

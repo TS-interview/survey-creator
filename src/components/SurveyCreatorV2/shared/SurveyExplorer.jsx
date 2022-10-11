@@ -64,7 +64,7 @@ export const parsedTreeData = (data) => {
   return tree;
 };
 
-const SurveyExplorer = ({}) => {
+const SurveyExplorer = () => {
   const { values } = useFormikContext();
   const [tree, setTree] = useState(parsedTreeData(values.children));
   useEffect(() => {
