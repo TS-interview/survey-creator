@@ -1,6 +1,6 @@
 import uuid from 'react-uuid';
 
-import { ITEM_TYPES, QUESTION_TYPES } from './constants';
+import { CHILDREN_TYPES, QUESTION_TYPES } from './constants';
 
 // will separate out to a helper function
 export const getQuestionTypeLabel = (id) => {
@@ -15,7 +15,7 @@ export const getQuestionTypeLabel = (id) => {
 export const createDefaultQuestion = () => {
   return {
     id: uuid(),
-    itemType: ITEM_TYPES.question,
+    itemType: CHILDREN_TYPES.question,
     title: 'Question',
     type: 'multiple-choice',
     options: [{ id: uuid(), label: 'Option 1' }],
@@ -24,21 +24,21 @@ export const createDefaultQuestion = () => {
 const createDefaultFolder = () => {
   return {
     id: uuid(),
-    itemType: ITEM_TYPES.folder,
+    itemType: CHILDREN_TYPES.folder,
     title: 'Folder',
     description: 'folder description...',
     totalQuestions: 0,
     totalFolders: 0,
-    items: [],
+    children: [],
   };
 };
 
 export const createDefaultItem = (type) => {
   switch (type) {
-    case ITEM_TYPES.question:
+    case CHILDREN_TYPES.question:
     default:
       return createDefaultQuestion();
-    case ITEM_TYPES.folder:
+    case CHILDREN_TYPES.folder:
       return createDefaultFolder();
   }
 };

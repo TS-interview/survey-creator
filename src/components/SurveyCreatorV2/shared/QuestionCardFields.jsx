@@ -21,7 +21,7 @@ import MultipleChoiceFields from './MultipleChoiceFields';
 
 const QuestionCardFields = ({ index }) => {
   const { values } = useFormikContext();
-  const type = values.items[index].type;
+  const type = values.children[index].type;
 
   let content = null;
 

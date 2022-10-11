@@ -32,7 +32,7 @@ SurveyCreator.propTypes = {
   survey: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    items: PropTypes.arrayOf(
+    children: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,

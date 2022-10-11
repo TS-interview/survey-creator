@@ -31,7 +31,7 @@ const mockData = {
 const mockInit = {
   title: 'blah',
   description: 'super blah',
-  items: [mockData.question],
+  children: [mockData.question],
 };
 
 const renderComp = () =>
@@ -63,7 +63,7 @@ describe('QuestionCard', () => {
     expect(getByTestId('questionCard')).toBeInTheDocument();
 
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).toBeInTheDocument();
 
     expect(getByTestId('questionTypeSelect')).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('QuestionCard', () => {
 
     expect(await findByTestId('numberFieldPreview')).toBeInTheDocument();
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).not.toBeInTheDocument();
   });
 
@@ -81,7 +81,7 @@ describe('QuestionCard', () => {
     expect(getByTestId('questionCard')).toBeInTheDocument();
 
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).toBeInTheDocument();
 
     expect(getByTestId('questionTypeSelect')).toBeInTheDocument();
@@ -90,7 +90,7 @@ describe('QuestionCard', () => {
 
     expect(await findByTestId('textFieldPreview')).toBeInTheDocument();
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).not.toBeInTheDocument();
   });
 
@@ -99,7 +99,7 @@ describe('QuestionCard', () => {
     expect(getByTestId('questionCard')).toBeInTheDocument();
 
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).toBeInTheDocument();
 
     expect(getByTestId('questionTypeSelect')).toBeInTheDocument();
@@ -108,7 +108,7 @@ describe('QuestionCard', () => {
 
     expect(await findByTestId('booleanFieldPreview')).toBeInTheDocument();
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).not.toBeInTheDocument();
   });
 
@@ -122,14 +122,14 @@ describe('QuestionCard', () => {
 
     expect(await findByTestId('booleanFieldPreview')).toBeInTheDocument();
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).not.toBeInTheDocument();
 
     user.selectOptions(typeDropdown, ['multiple-choice']);
 
     expect(await findByTestId('multipleChoiceFields')).toBeInTheDocument();
     expect(
-      container.querySelector(`input[name="items.0.options.0.label"]`)
+      container.querySelector(`input[name="children.0.options.0.label"]`)
     ).toBeInTheDocument();
   });
 });

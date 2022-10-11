@@ -16,12 +16,12 @@ const QuestionTypeSelect = ({ index, name, previousType }) => {
       previousType === QUESTION_TYPES.multipleChoice.id &&
       e.target.value !== QUESTION_TYPES.multipleChoice.id
     ) {
-      setFieldValue(`items.${index}.options`, null);
+      setFieldValue(`children.${index}.options`, null);
     } else if (
       e.target.value === QUESTION_TYPES.multipleChoice.id &&
       previousType !== QUESTION_TYPES.multipleChoice.id
     ) {
-      setFieldValue(`items.${index}.options`, [
+      setFieldValue(`children.${index}.options`, [
         { id: uuid(), label: 'Option' },
       ]);
     }

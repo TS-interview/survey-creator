@@ -1,8 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { dummySurveyData } from './components/SurveyCreator/constants';
 // import SurveyCreator from './components/SurveyCreator/SurveyCreator';
 import SurveyCreator from './components/SurveyCreatorV2/SurveyCreator';
+import { dummySurveyData } from './components/SurveyCreatorV2/constants';
 
 function App() {
   const localData = localStorage.getItem('survey');

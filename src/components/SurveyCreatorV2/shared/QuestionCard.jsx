@@ -15,7 +15,7 @@ import { Draggable } from '@hello-pangea/dnd';
 import { FastField } from 'formik';
 import PropTypes from 'prop-types';
 
-import { ITEM_TYPES } from '../constants';
+import { CHILDREN_TYPES } from '../constants';
 import { createDefaultItem, getQuestionTypeLabel } from '../helpers';
 import FloatingMenu from './FloatingMenu';
 import QuestionCardFields from './QuestionCardFields';
@@ -41,13 +41,13 @@ const QuestionCard = ({
   }, []);
 
   const insertQuestionHandler = useCallback(() => {
-    const defaultQuestion = createDefaultItem(ITEM_TYPES.question);
+    const defaultQuestion = createDefaultItem(CHILDREN_TYPES.question);
     setActive(defaultQuestion?.id);
     insert(index + 1, defaultQuestion);
   }, [index]);
 
   const insertFolderHandler = useCallback(() => {
-    const defaultQuestion = createDefaultItem(ITEM_TYPES.folder);
+    const defaultQuestion = createDefaultItem(CHILDREN_TYPES.folder);
     setActive(defaultQuestion?.id);
     insert(index + 1, defaultQuestion);
   }, [index]);
@@ -115,11 +115,11 @@ const QuestionCard = ({
                 <FastField
                   as={Input}
                   bg="gray.50"
-                  name={`items.${index}.title`}
+                  name={`children.${index}.title`}
                   w="200px"
                 />
                 <QuestionTypeSelect
-                  name={`items.${index}.type`}
+                  name={`children.${index}.type`}
                   index={index}
                   previousType={question?.type}
                 />

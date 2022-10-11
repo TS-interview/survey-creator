@@ -23,7 +23,7 @@ const MultipleChoiceField = ({
         <FastField
           as={Input}
           bg="gray.50"
-          name={`items.${index}.options.${optionIndex}.label`}
+          name={`children.${index}.options.${optionIndex}.label`}
           w="200px"
         />
       </Flex>
@@ -40,10 +40,10 @@ const MultipleChoiceField = ({
 
 const MultipleChoiceFields = ({ index }) => {
   const { values } = useFormikContext();
-  const options = values.items[index].options;
+  const options = values.children[index].options;
 
   return (
-    <FieldArray name={`items.${index}.options`}>
+    <FieldArray name={`children.${index}.options`}>
       {({ insert, remove }) => {
         const insertHandler = (optionIndex) => {
           insert(optionIndex + 1, {

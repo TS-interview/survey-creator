@@ -7,7 +7,7 @@ export const QUESTION_TYPES = {
   text: { id: 'text', label: 'Text' },
 };
 
-export const ITEM_TYPES = {
+export const CHILDREN_TYPES = {
   question: 'question',
   folder: 'folder',
 };
@@ -16,10 +16,10 @@ export const ITEM_TYPES = {
 export const dummySurveyData = {
   title: 'Untitled survey',
   description: 'description',
-  items: [
+  children: [
     {
       id: uuid(),
-      itemType: ITEM_TYPES.question,
+      itemType: CHILDREN_TYPES.question,
       title: 'Question 1',
       type: 'multiple-choice',
       options: [{ id: uuid(), label: 'option 1' }],

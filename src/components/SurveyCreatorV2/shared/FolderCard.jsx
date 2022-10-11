@@ -18,7 +18,7 @@ import { FastField } from 'formik';
 import PropTypes from 'prop-types';
 import { BiFolderOpen } from 'react-icons/bi';
 
-import { ITEM_TYPES } from '../constants';
+import { CHILDREN_TYPES } from '../constants';
 import { createDefaultItem } from '../helpers';
 import FloatingMenu from './FloatingMenu';
 
@@ -30,7 +30,6 @@ const FolderCard = ({
   remove,
   setActive,
   prevNotFolder,
-  nextNotFolder,
 }) => {
   const [isHover, setIsHover] = useState(false);
   const isActive = activeItem === folder?.id;
@@ -44,13 +43,13 @@ const FolderCard = ({
   }, []);
 
   const insertQuestionHandler = useCallback(() => {
-    const defaultQuestion = createDefaultItem(ITEM_TYPES.question);
+    const defaultQuestion = createDefaultItem(CHILDREN_TYPES.question);
     setActive(defaultQuestion?.id);
     insert(index + 1, defaultQuestion);
   }, [index]);
 
   const insertFolderHandler = useCallback(() => {
-    const defaultQuestion = createDefaultItem(ITEM_TYPES.folder);
+    const defaultQuestion = createDefaultItem(CHILDREN_TYPES.folder);
     setActive(defaultQuestion?.id);
     insert(index + 1, defaultQuestion);
   }, [index]);
@@ -65,12 +64,6 @@ const FolderCard = ({
       setActive(folder?.id);
     }
   }, [isActive]);
-
-  console.group();
-  console.log('folder', folder.id);
-  console.log('nextNotFolder, ', nextNotFolder);
-  console.log('prevNotFolder, ', prevNotFolder);
-  console.groupEnd();
 
   return (
     <Draggable draggableId={folder?.id} index={index}>
@@ -136,7 +129,7 @@ const FolderCard = ({
               <FastField
                 as={Input}
                 bg="gray.50"
-                name={`items.${index}.title`}
+                name={`children.${index}.title`}
                 w="200px"
               />
             ) : (
@@ -189,7 +182,7 @@ FolderCard.propTypes = {
   folder: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    itemType: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
@@ -199,6 +192,7 @@ FolderCard.propTypes = {
   }),
   remove: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,
+  prevNotFolder: PropTypes.bool,
 };
 
 const arePropsEqual = (prevProps, nextProps) => {
